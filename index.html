@@ -14,6 +14,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            font-family: Helvetica, Arial, sans-serif; /* Use Helvetica font or Arial if not available */
         }
 
         .container {
@@ -26,8 +27,8 @@
         }
 
         .profile-image {
-            width: 200px; /* Adjust the size as needed */
-            height: 200px; /* Adjust the size as needed */
+            width: 280px; /* Adjust the size as needed */
+            height: 587px; /* Adjust the size as needed */
             border-radius: 50%;
             border: 5px solid white;
             margin-bottom: 20px;
@@ -57,20 +58,28 @@
         .additional-section a {
             text-decoration: none;
             color: white;
+            display: block;
+            margin: 15px 0;
         }
+
+        .icon {
+            margin-right: 10px;
+            font-size: 36px; /* Increase the icon size */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image">
-        <h1>Welcome to Abpor (Rob) @ Ncrypt</h1>
-        <p>Here, you can find all the cool stuff about me.</p>
+        <h1>Abpor (Rob) @ Ncrypt</h1>
+        <p>Follow us here : </p>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
-                <i class="fab fa-linkedin"></i> LinkedIn
+                <i class="fab fa-linkedin icon"></i> LinkedIn
             </a>
             <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
-                <i class="fab fa-discord"></i> Discord
+                <i class="fab fa-discord icon"></i> Discord
             </a>
         </div>
         <div class="main-section">
@@ -80,16 +89,16 @@
         <div class="additional-section">
             <h2>Additional Links</h2>
             <p>
-                <i class="fas fa-gamepad icon"></i>
-                <a href="https://www.youtube.com/channel/UCjWnSixN1yw8hiaTbTk5RYA" target="_blank">Check out my videos on YouTube following GameDev journey</a>
+                <a href="https://www.youtube.com/channel/UCjWnSixN1yw8hiaTbTk5RYA" target="_blank">
+                <i class="fas fa-gamepad icon"></i> Check out my videos on YouTube following GameDev journey
             </p>
             <p>
-                <i class="fas fa-podcast icon"></i>
-                <a href="https://podcast.ncrypt.co.nz" target="_blank">Join the Nearly Qualified podcast - we flesh out ideas about technology, video games, strategy, and psychology</a>
+                <a href="https://podcast.ncrypt.co.nz" target="_blank">
+                <i class="fas fa-podcast icon"></i> Join the Nearly Qualified podcast - we flesh out ideas about technology, video games, strategy, and psychology
             </p>
             <p>
-                <i class="fas fa-coffee icon"></i>
-                <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">If you would like to buy me a coffee, please do so here</a>
+                <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
+                <i class="fas fa-coffee icon"></i> If you would like to buy me a coffee, please do so here
             </p>
         </div>
     </div>
