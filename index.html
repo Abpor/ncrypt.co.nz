@@ -29,9 +29,15 @@
         .profile-image {
             width: 280px; /* Adjust the size as needed */
             height: 587px; /* Adjust the size as needed */
-            border-radius: 50%;
+            border-radius: 20px; /* Use a rounded rectangle shape */
             border: 5px solid white;
             margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add a subtle shadow */
+            transition: transform 0.2s ease-in-out; /* Add a hover effect */
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05); /* Increase size on hover */
         }
 
         .social-links {
@@ -43,11 +49,22 @@
             color: white;
             font-size: 24px;
             margin: 0 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+            padding: 5px 10px; /* Add some padding */
+            border-radius: 5px; /* Add rounded corners */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow */
         }
 
         .main-section {
             text-align: center;
             margin-top: 30px;
+        }
+
+        .main-section h2 {
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to headers */
+            padding: 5px 10px; /* Add padding to headers */
+            border-radius: 5px; /* Add rounded corners to headers */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow to headers */
         }
 
         .additional-section {
@@ -60,13 +77,16 @@
             color: white;
             display: block;
             margin: 15px 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+            padding: 5px 10px; /* Add some padding */
+            border-radius: 5px; /* Add rounded corners */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow */
         }
 
         .icon {
             margin-right: 10px;
             font-size: 36px; /* Increase the icon size */
         }
-
     </style>
 </head>
 <body>
