@@ -17,6 +17,20 @@
             font-family: Helvetica, Arial, sans-serif; /* Use Helvetica font or Arial if not available */
         }
 
+        .overlay-container {
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+            z-index: -1; /* Place the overlay behind the content */
+        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -73,7 +87,7 @@
             margin-top: 30px;
         }
 
-        .additional-section a {
+        .additional-links {
             text-decoration: none;
             color: white;
             display: block;
@@ -91,36 +105,41 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image">
-        <h1>Abpor (Rob) @ Ncrypt</h1>
-        <p>Follow us here : </p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
-                <i class="fab fa-linkedin icon"></i> LinkedIn
-            </a>
-            <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
-                <i class="fab fa-discord icon"></i> Discord
-            </a>
-        </div>
-        <div class="main-section">
-            <h2>Expertise</h2>
-            <p>Game Dev. NZ Telco. IT and Service Desk. Automations. Generative AI.</p>
-        </div>
-        <div class="additional-section">
-            <h2>Additional Links</h2>
-            <p>
-                <a href="https://www.youtube.com/channel/UCjWnSixN1yw8hiaTbTk5RYA" target="_blank">
-                <i class="fas fa-gamepad icon"></i> Check out my videos on YouTube following GameDev journey
-            </p>
-            <p>
-                <a href="https://podcast.ncrypt.co.nz" target="_blank">
-                <i class="fas fa-podcast icon"></i> Join the Nearly Qualified podcast - we flesh out ideas about technology, video games, strategy, and psychology
-            </p>
-            <p>
-                <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
-                <i class="fas fa-coffee icon"></i> Buy me a coffee
-            </p>
+    <div class="overlay-container">
+        <div class="overlay"></div> <!-- Translucent overlay -->
+        <div class="container">
+            <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image">
+            <h1>Abpor (Rob) @ Ncrypt</h1>
+            <p>Follow us here : </p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
+                    <i class="fab fa-linkedin icon"></i> LinkedIn
+                </a>
+                <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
+                    <i class="fab fa-discord icon"></i> Discord
+                </a>
+            </div>
+            <div class="main-section">
+                <h2>Expertise</h2>
+                <p>Game Dev. NZ Telco. IT and Service Desk. Automations. Generative AI.</p>
+            </div>
+            <div class="additional-section">
+                <h2>Additional Links</h2>
+                <div class="additional-links">
+                    <p>
+                        <a href="https://www.youtube.com/channel/UCjWnSixN1yw8hiaTbTk5RYA" target="_blank">
+                        <i class="fas fa-gamepad icon"></i> Check out my videos on YouTube following GameDev journey
+                    </p>
+                    <p>
+                        <a href="https://podcast.ncrypt.co.nz" target="_blank">
+                        <i class="fas fa-podcast icon"></i> Join the Nearly Qualified podcast - we flesh out ideas about technology, video games, strategy, and psychology
+                    </p>
+                    <p>
+                        <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
+                        <i class="fas fa-coffee icon"></i> Buy me a coffee
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
