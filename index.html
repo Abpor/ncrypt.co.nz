@@ -1,174 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abpor (Rob) @ Ncrypt</title>
-    <!-- Include Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('assets/images/rob_background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: Helvetica, Arial, sans-serif; /* Use Helvetica font or Arial if not available */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abpor (Rob) @ Ncrypt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        /* Increase font size for various elements */
-        .container,
-        .profile-image,
-        .social-links a,
-        .main-section h2,
-        .main-section p,
-        .additional-links a,
-        .github-link a {
-            font-size: 24px; /* Increase the font size as needed */
-        }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Helvetica, Arial, sans-serif;
+      background: url('assets/images/rob_background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow: hidden;
+    }
 
-        .overlay-container {
-            position: relative;
-        }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
-            z-index: -1; /* Place the overlay behind the content */
-        }
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 80vh;
-            color: white;
-        }
+    .left-pane {
+      width: 35%;
+      min-width: 300px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 2px solid rgba(255, 255, 255, 0.2);
+    }
 
-        .profile-image {
-            width: 280px; /* Adjust the size as needed */
-            height: 587px; /* Adjust the size as needed */
-            border-radius: 20px; /* Use a rounded rectangle shape */
-            border: 5px solid white;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add a subtle shadow */
-            transition: transform 0.2s ease-in-out; /* Add a hover effect */
-        }
+    .profile-image {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      aspect-ratio: 2/4;
+      border-radius: 20px;
+      border: 5px solid white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      margin-bottom: 20px;
+      object-fit: cover;
+      transition: transform 0.2s ease-in-out;
+    }
 
-        .profile-image:hover {
-            transform: scale(1.05); /* Increase size on hover */
-        }
+    .profile-image:hover {
+      transform: scale(1.07);
+    }
 
-        .social-links {
-            margin-top: 30px; /* Increase vertical margin */
-        }
+    .right-pane {
+      width: 65%;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 40px;
+    }
 
-        .social-links a {
-            text-decoration: none;
-            color: white; /* Change link text color to white */
-            margin: 10px 15px; /* Increase vertical and horizontal margins */
-            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
-            padding: 30px 30px; /* Increase padding */
-            border-radius: 20px; /* Add rounded corners */
-            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow */
-        }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 72px;
+    }
 
-        .main-section {
-            text-align: center;
-            margin-top: 80px;
-            margin-bottom: 10px;
-        }
+    .social-links {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        .main-section h2 {
-            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to headers */
-            padding: 10px 20px; /* Increase padding for headers */
-            border-radius: 5px; /* Add rounded corners to headers */
-            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow to headers */
-            display: inline; /* Make headers inline elements */
-        }
+    .social-links a {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      margin: 10px;
+      border-radius: 20px;
+      font-size: 40px;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    }
 
-        .additional-section {
-            text-align: center;
-            margin-top: 30px;
-        }
+    .icon {
+      font-size: 52px;
+      margin-right: 10px;
+    }
 
-        .additional-links {
-            text-decoration: none;
-            color: white; /* Change link text color to white */
-            display: block;
-            margin: 20px 0; /* Increase vertical margin */
-            background-color: rgba(0, 0, 0, 0.8); /* Increase opacity for better readability */
-            padding: 15px 30px; /* Increase padding */
-            border-radius: 10px; /* Add rounded corners */
-            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Add text shadow */
-        }
+    .main-section {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 1.6;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
 
-        .additional-links a {
-            color: white; /* Change link text color to white inside the div tags */
-            text-decoration: none;
-        }
+    .section-heading {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
 
-        .icon {
-            margin-right: 10px;
-            font-size: 36px; /* Increase the icon size */
-        }
-    </style>
+    .right-pane p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .additional-section {
+      margin-top: 40px;
+    }
+
+    .additional-links a {
+      text-align: center;
+      display: block;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      font-size: 32px;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    }
+
+    .tidycal-embed {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .left-pane {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .right-pane {
+        width: 100%;
+        height: auto;
+      }
+
+      .profile-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .icon, .social-links a {
+        font-size: 24px;
+      }
+
+      .additional-links a {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="overlay-container">
-        <div class="overlay"></div> <!-- Translucent overlay -->
-        <div class="container">
-            <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image">
-            <h1>Abpor (Rob) @ Ncrypt</h1>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
-                    <i class="fab fa-linkedin icon"></i> LinkedIn
-                </a>
-                <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
-                    <i class="fab fa-discord icon"></i> Discord
-                </a>
-                <a href="https://github.com/Abpor/" target="_blank">
-                    <i class="fab fa-github icon"></i> GitHub
-                </a>
-            </div>
-            <div class="main-section">
-                <p>Data Analytics, Generative AI, Automation, VoIP, Operations, IT Support,<br> Quirky Marketing Niches, Gamification, Game Server Hosting, Home Lab IT Projects<br><br>
+  <div class="overlay"></div>
+  <div class="layout">
+    <!-- Left Pane -->
+    <div class="left-pane">
+      <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image" />
+      <h1>Abpor @ nCrypt</h1><br><h2>Rob Parkes</h2>
 
-                    Industry Niches :<br> Media and Entertainment, Contact Centers, Telecommunications<br><br>
-                    
-                    Content Creation Consultancy :<br> Online Radio, Podcasts, Social Media, YouTube, Brainrot Content,<br> Industry Niche Content, Spicy Marketing Data, Social Media Moderation Data</p>
-                <div class="tidycal-embed" data-path="ncrypt/discovery"></div><script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
-            </div>
-            <div class="additional-section">
-                <div class="additional-links">
-                    <p>
-                        <a href="https://www.youtube.com/channel/UCjWnSixN1yw8hiaTbTk5RYA" target="_blank">
-                        <i class="fas fa-tv icon"></i> Check out my content on YouTube
-                    </a>
-                    <p>
-                        <a href="https://www.youtube.com/channel/UCDvyRntmiJBoXYPhjVfSEjQ" target="_blank">
-                        <i class="fas fa-gamepad icon"></i> GameGelo Games night footage
-                    </a>
-                    </p>
-                    <p>
-                        <a href="https://podcast.ncrypt.co.nz" target="_blank">
-                        <i class="fas fa-podcast icon"></i> Nearly Qualified podcast - technology, psychology and video games
-                    </a>
-                    </p>
-                    <p>
-                        <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
-                        <i class="fas fa-coffee icon"></i> Buy Me A Coffee
-                    </a>
-                    </p>
-                </div>
-            </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
+          <i class="fab fa-linkedin icon"></i> LinkedIn
+        </a>
+        <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
+          <i class="fab fa-discord icon"></i> Discord
+        </a>
+        <a href="https://github.com/Abpor/" target="_blank">
+          <i class="fab fa-github icon"></i> GitHub
+        </a>
+      </div>
+
+      <div class="additional-section">
+        <div class="additional-links">
+          <a href="https://www.youtube.com/@ncryptnz" target="_blank">
+            <i class="fas fa-tv icon"></i> YouTube : nCrypt Content
+          </a>
+          <a href="https://www.youtube.com/@ncryptgaming" target="_blank">
+            <i class="fas fa-gamepad icon"></i> YouTube : GameGelo Games night footage
+          </a>
+          <a href="https://podcast.ncrypt.co.nz" target="_blank">
+            <i class="fas fa-podcast icon"></i> Podcast : Nearly Qualified - technology, psychology and video games
+          </a>
+          <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
+            <i class="fas fa-coffee icon"></i> Buy Me A Coffee
+          </a>
         </div>
+      </div>
     </div>
+
+    <!-- Right Pane -->
+    <div class="right-pane">
+      <div class="main-section">
+        <h2 class="section-heading">Data Analytics  |  Generative AI  |  Automation  |  VoIP  |  Operations  |  IT Support  |  Quirky Marketing Niches  |  Gamification  |  Game Server Hosting  |  Home Lab IT</h2>
+
+        <h2 class="section-heading">Industry Niches:</h2>
+        <p>
+          Contact Centers, Telecommunications, Media and Entertainment, Bookkeeping and Accounts, Development
+        </p>
+
+        <h2 class="section-heading">Content Creation Consultancy:</h2>
+        <p>
+          Online Radio, Podcasts, Social Media, YouTube, Brainrot Content, Industry Niche Content, Spicy Marketing Data, Social Media Moderation Data
+        </p>
+
+        <div class="tidycal-embed" data-path="ncrypt/discovery"></div>
+        <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
