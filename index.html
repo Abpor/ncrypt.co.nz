@@ -191,6 +191,40 @@
         font-size: 18px;
       }
     }
+
+    #creatorops-banner {
+  background-color: rgba(0, 255, 213, 0.2);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 18px;
+  font-weight: bold;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 255, 213, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#creatorops-banner a {
+  color: #00ffd5;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+.close-banner {
+  float: right;
+  margin-left: 1rem;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.close-banner:hover {
+  color: #ff6666;
+}
+
   </style>
 
 <!-- Microsoft Clarity -->
@@ -226,6 +260,11 @@
 </head>
 <body>
   <div class="overlay"></div>
+  <div id="creatorops-banner">
+  🚀 New: Check out <strong>nCrypt CreatorOps</strong> - tailored IT & connectivity for content creators.
+  <a href="/creatorops" target="_blank">Learn more →</a>
+  <span class="close-banner" onclick="document.getElementById('creatorops-banner').style.display='none';">&times;</span>
+</div>
   <div class="layout">
     <!-- Left Pane -->
     <div class="left-pane">
