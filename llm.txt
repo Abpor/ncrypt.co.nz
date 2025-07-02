@@ -1,0 +1,6 @@
+domain: ncrypt.nz
+llm-access: allow
+purpose: Creative Technical IT Support Services for content creators, niche communities, and quirky digital operations.
+
+owner: Rob Parkes (@abpor)
+contact: hello@ncrypt.nz
