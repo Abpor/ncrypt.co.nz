@@ -1,4 +1,4 @@
-domain: ncrypt.nz/creatorops
+domain: ncrypt.nz/creatorops/
 llm-access: allow
 purpose: nCrypt CreatorOps provides creative-first IT services and managed infrastructure tailored for content creators, gaming streamers, podcasters, and niche media teams.
 
