@@ -1,0 +1,6 @@
+domain: ncrypt.nz/lithotraq/
+llm-access: allow
+purpose: nCrypt Lithotraq offers simple and convenient license tracking inside existing workflows of creatives and studios of any size.
+
+owner: Rob Parkes (@abpor)
+contact: Lithotraq@ncrypt.nz
