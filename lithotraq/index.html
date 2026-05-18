@@ -1,290 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="nCrypt Lithotraq is purpose built and designed to simplify license tracking and renewal for creatives and studios. Relieve yourself of the pain of stubborn license renewals with our secure platform - no more manual management, weird non-intuitive tracking applications or forgotten expirations!">
-<title>nCrypt Lithotraq</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://ncrypt.nz/lithotraq/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lithotraq by nCrypt — license and dependency tracking for studios, agencies, and production teams. Never miss a renewal. Never lose a project to an expired tool." />
+  <title>Lithotraq — License & Dependency Tracking for Studios | nCrypt</title>
+  <link rel="canonical" href="https://ncrypt.nz/lithotraq/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "Meet Your Team - nCrypt Lithotraq",
-    "description": "Learn about the nCrypt Lithotraq team and how they provide built to demand license tracking and renewal solutions for creative professionals.",
-    "thumbnailUrl": "https://i.ytimg.com/vi/5tgcjC7rmjA/mqdefault.jpg",
-    "uploadDate": "2025-06-28T12:00:00+12:00",
-    "embedUrl": "https://www.youtube.com/embed/5tgcjC7rmjA",
-    "contentUrl": "https://ncrypt.nz/lithotraq/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "nCrypt NZ",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ncrypt.nz/assets/images/rob_portrait.jpg"
-      }
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "SoftwareApplication",
     "name": "nCrypt Lithotraq",
     "url": "https://ncrypt.nz/lithotraq/",
-    "sameAs": [
-      "https://www.youtube.com/@ncryptnz",
-      "https://github.com/abpor",
-      "https://discord.gg/UVcmCAcnXU"
+    "description": "License and dependency tracking for studios, agencies, and production teams.",
+    "applicationCategory": "BusinessApplication",
+    "offers": [
+      { "@type": "Offer", "price": "19", "priceCurrency": "USD", "name": "Lithotraq Basic" },
+      { "@type": "Offer", "price": "49", "priceCurrency": "USD", "name": "Lithotraq Pro" },
+      { "@type": "Offer", "price": "299", "priceCurrency": "USD", "name": "Lithotraq Studio" }
     ],
-    "description": "Built to demand license tracking and renewal solutions for creative professionals.",
-    "logo": "https://ncrypt.nz/assets/images/rob_portrait.jpg"
+    "provider": { "@type": "Organization", "name": "nCrypt", "url": "https://ncrypt.nz" }
   }
   </script>
-<style>
-body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #0f0f0f;
-  color: #f5f5f5;
-  line-height: 1.6;
-}
 
-.container {
-  max-width: 960px;
-  margin: auto;
-  padding: 1.5rem;
-}
+  <style>
+    :root {
+      --bg: #09090f;
+      --surface: #0f0f1a;
+      --surface2: #13131f;
+      --border: rgba(0,200,255,0.12);
+      --accent: #00c8ff;
+      --accent2: #00ffa0;
+      --text: #e8ecf0;
+      --muted: #6a7a8a;
+      --warn: #ffaa00;
+      --danger: #ff4d6d;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+    }
 
-h1, h2, h3 {
-  color: #00ffd5;
-  margin-top: 0;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-.hero {
-  text-align: center;
-  padding: 3rem 1rem;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-.cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.cta-buttons a {
-  padding: 0.75rem 1.5rem;
-  background: #00ffd5;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  display: inline-block;
-  min-width: 120px;
-  text-align: center;
-}
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(9,9,15,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.section {
-  padding: 2.5rem 1rem;
-  border-bottom: 1px solid #333;
-}
+    .nav-logo { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--accent2); text-decoration: none; }
+    .nav-logo span { color: var(--text); }
+    .nav-back { font-size: 0.78rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; padding: 0.5rem 1.1rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: #00a8d8; }
 
-ul, ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
 
-ul li::before {
-  content: "✅ ";
-  color: #00ffd5;
-}
+    .hero-inner { max-width: 860px; margin: 0 auto; width: 100%; }
 
-ol.plan li::before {
-  content: counter(step) ". ";
-  counter-increment: step;
-  color: #00ffd5;
-  font-weight: bold;
-}
+    .breadcrumb { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--accent2); text-decoration: none; }
 
-ol.plan {
-  counter-reset: step;
-  padding-left: 0;
-}
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,200,255,0.25);
+      padding: 0.3rem 0.75rem; border-radius: 2px; margin-bottom: 1.5rem;
+      background: rgba(0,200,255,0.06);
+    }
 
-.pricing-table {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-}
+    h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
 
-@media (min-width: 600px) {
-  .pricing-table {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
+    h1 em { font-style: normal; color: var(--accent); }
 
-.plan {
-  background: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #333;
-}
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
 
-.plan h3 {
-  margin-top: 0;
-}
+    .hero-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--warn);
+      border: 1px solid rgba(255,170,0,0.2);
+      background: rgba(255,170,0,0.05);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
 
-.footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #777;
-}
+    .hero-stat i { flex-shrink: 0; }
 
-#feature-flow {
-  background-color: #151515;
-  border-radius: 8px;
-  padding: 2rem;
-}
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
-.decision-box {
-  margin-top: 2rem;
-  border: 1px solid #00ffd5;
-  border-radius: 8px;
-  padding: 1.5rem;
-  background-color: #0a0a0a;
-}
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #000;
+      font-family: var(--mono); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.04em;
+      padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #00a8d8; transform: translateY(-1px); }
 
-.deftform {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--text);
+      font-family: var(--mono); font-size: 0.85rem;
+      padding: 0.85rem 1.8rem; border: 1px solid var(--border); border-radius: 4px; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-a {
-  word-break: break-word;
-}
+    /* DASHBOARD MOCKUP */
+    .dashboard-mock {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-</style>
-<script async defer src='https://app.visitortracking.com/assets/js/tracer.js'></script>
-<script>
-function init_tracer() { 
-   var tracer = new Tracer({  
-   websiteId : "95bbc88b-808f-4e88-89bb-267deb713c5c",  
-   async : true, 
-   debug : false }); 
- } 
- </script>
- 
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "so1x1u75w3");
-</script>
+    .dash-bar {
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
+    .dash-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dash-title { font-size: 0.72rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.08em; }
+
+    .dash-rows { padding: 0; }
+
+    .dash-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.78rem;
+      align-items: center;
+    }
+
+    .dash-row.header { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,255,255,0.02); }
+    .dash-row .name { color: var(--text); }
+    .dash-row .days { color: var(--muted); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .badge.ok { background: rgba(0,255,160,0.12); color: var(--accent2); }
+    .badge.warn { background: rgba(255,170,0,0.12); color: var(--warn); }
+    .badge.alert { background: rgba(255,77,109,0.12); color: var(--danger); }
+    .badge.managed { background: rgba(0,200,255,0.12); color: var(--accent); }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 1; padding: 5rem 2.5rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -0.025em; color: var(--text); margin-bottom: 0.75rem; }
+    .section-sub { color: var(--muted); font-size: 0.9rem; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.75; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+    .feature-icon { font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .feature-card h4 { font-family: var(--display); font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .step:last-child { border-bottom: none; }
+    .step-num { font-family: var(--display); font-size: 2.5rem; font-weight: 800; color: var(--border); flex-shrink: 0; width: 60px; line-height: 1; }
+    .step-content h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .step-content p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .plan.featured { border-color: rgba(0,200,255,0.4); background: linear-gradient(135deg, rgba(0,200,255,0.05) 0%, var(--surface) 100%); }
+    .plan-badge { position: absolute; top: -1px; right: 1.5rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: #000; padding: 0.2rem 0.6rem; border-radius: 0 0 4px 4px; font-weight: 500; }
+    .plan-name { font-family: var(--display); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .plan-price { font-family: var(--display); font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 0.2rem; }
+    .plan-price span { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+    .plan-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.55; }
+    .plan-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--muted); }
+    .plan-features li::before { content: '✓'; color: var(--accent); flex-shrink: 0; margin-top: 0.05em; }
+    .plan-cta { display: block; text-align: center; margin-top: 1.5rem; padding: 0.7rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 0.82rem; border-radius: 4px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .plan-cta:hover { border-color: var(--accent); color: var(--accent); }
+    .plan.featured .plan-cta { background: var(--accent); border-color: var(--accent); color: #000; }
+    .plan.featured .plan-cta:hover { background: #00a8d8; }
+
+    .addons {
+      margin-top: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+    }
+    .addons h4 { font-family: var(--display); font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; }
+    .addon-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .addon-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--muted); }
+    .addon-item i { color: var(--accent); width: 14px; }
+
+    /* CONTACT */
+    .contact-section { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-text h2 { margin-bottom: 0.5rem; }
+    .contact-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .contact-detail { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.75rem; text-decoration: none; transition: color 0.2s; }
+    .contact-detail:hover { color: var(--accent); }
+    .contact-detail i { color: var(--accent); width: 16px; }
+
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--display); font-weight: 800; color: var(--accent2); font-size: 1rem; text-decoration: none; }
+    .footer-copy { font-size: 0.72rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 5.5rem 1.25rem 3rem; }
+      section { padding: 3rem 1.25rem; }
+      .dash-row { grid-template-columns: 1fr 1fr; font-size: 0.72rem; }
+      .dash-row .type, .dash-row .days { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+
+  <script async defer src='https://app.visitortracking.com/assets/js/tracer.js'></script>
+  <script>function init_tracer() { var tracer = new Tracer({ websiteId: "95bbc88b-808f-4e88-89bb-267deb713c5c", async: true, debug: false }); }</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","so1x1u75w3");
+  </script>
 </head>
 <body>
-<div class="container">
-<div class="hero">
-<h1>nCrypt Lithotraq</h1>
-<p>License Tracking That Gets You - Simplified tracking and renewals for creatives, studios and freelancers</p>
-<div class="cta-buttons">
-<a href="#feature-flow">See How It Works</a>
-<a href="#pricing">View Plans</a>
-<a href="#contact">Get Started Now</a>
-</div>
-</div>
 
-<div class="section" id="feature-flow">
-<h2>📋 License Tracking Made Simple</h2>
-<p>nCrypt Lithotraq is your brain-dead easy solution for managing creative licenses. We automatically track expirations and handle renewals with minimal input from you. We wade through the gruff and you receive an executive decision to call.</p>
+  <nav>
+    <a href="/" class="nav-logo">n<span>Crypt</span></a>
+    <a href="/" class="nav-back"><i class="fas fa-arrow-left"></i> Back to nCrypt</a>
+    <a href="#contact" class="nav-cta">Get Started →</a>
+  </nav>
 
-<p>Here's how our system works:</p>
-<ol class="plan">
-  <li>Upload your existing license details to the nCrypt Lithotraq portal</li>
-  <li>If there is key information missing we work with you to complete it</li>
-  <li>Our dedicated team and scheduling software work quietly in the background</li>
-  <li>Before your license renewal or expiration time rolls around, we get in touch with you the way you work</li>
-  <li>You decide whether you want to renew your license</li>
-  <li>If you do decide to renew your licenses we get you the simple steps to renew when you need them</li>
-</ol>
-</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="breadcrumb"><a href="/">nCrypt</a> / Lithotraq</div>
+      <div class="hero-tag">Layer 2 — Operational Stability</div>
+      <h1>Expired licenses<br>don't send <em>warnings.</em><br>We do.</h1>
+      <p class="hero-sub">
+        Lithotraq tracks every software license, subscription, and dependency across your studio or team — and alerts you before anything expires, lapses, or causes a mid-project emergency.
+      </p>
+      <div class="hero-stat">
+        <i class="fas fa-triangle-exclamation"></i>
+        The average studio has 3+ licenses expire unnoticed per quarter. Each one is a workflow outage or a rushed renewal at full price.
+      </div>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary"><i class="fas fa-layer-group"></i> See Plans</a>
+        <a href="#how" class="btn-secondary">How It Works →</a>
+      </div>
 
-<div class="section">
-<h2>🛠️ Key Features for License Management</h2>
-<p>nCrypt Lithotraq is specifically designed to handle all aspects of creative license management - no more spreadsheets or manual tracking!</p>
-<ul>
-<li><strong>License Database:</strong> Securely store license billing information inside a purpose-built database with periodic backups</li>
-<li><strong>Seamless Tracking:</strong> Our team and systems proactively detect expiration dates and renewal requirements</li>
-<li><strong>Renewal Notifications:</strong> Receive alerts before any license expires or requires renewal - stay ahead of deadlines!</li>
-<li><strong>Decision Confirmation:</strong> When triggered, confirm renewals through our secure platform with minimal effort</li>
-<li><strong>Secure Execution:</strong> Automated execution of renewal steps using your credentials on the exact renewal date</li>
-<li><strong>Dashboard View:</strong> Easily monitor all licenses in one place - see expirations, statuses, and upcoming actions</li>
-</ul>
-</div>
+      <!-- DASHBOARD MOCK -->
+      <div class="dashboard-mock">
+        <div class="dash-bar">
+          <div class="dash-dot" style="background:#ff5f57"></div>
+          <div class="dash-dot" style="background:#ffbd2e"></div>
+          <div class="dash-dot" style="background:#28ca42"></div>
+          <span class="dash-title">Lithotraq — License Dashboard</span>
+        </div>
+        <div class="dash-rows">
+          <div class="dash-row header">
+            <span>License / Tool</span>
+            <span>Type</span>
+            <span>Days Left</span>
+            <span>Status</span>
+          </div>
+          <div class="dash-row">
+            <span class="name">Adobe Creative Cloud</span>
+            <span class="type" style="color:var(--muted); font-size:0.75rem;">Annual</span>
+            <span class="days">62 days</span>
+            <span><span class="badge ok">✓ Active</span></span>
+          </div>
+          <div class="dash-row">
+            <span class="name">DaVinci Resolve Studio</span>
+            <span class="type" style="color:var(--muted); font-size:0.75rem;">Perpetual</span>
+            <span class="days">Upgrade due</span>
+            <span><span class="badge warn">⚠ Review</span></span>
+          </div>
+          <div class="dash-row">
+            <span class="name">ShotGrid (Autodesk)</span>
+            <span class="type" style="color:var(--muted); font-size:0.75rem;">Monthly</span>
+            <span class="days">8 days</span>
+            <span><span class="badge alert">! Expiring</span></span>
+          </div>
+          <div class="dash-row">
+            <span class="name">Slack Pro (team)</span>
+            <span class="type" style="color:var(--muted); font-size:0.75rem;">Annual</span>
+            <span class="days">Managed</span>
+            <span><span class="badge managed">↻ Managed</span></span>
+          </div>
+          <div class="dash-row">
+            <span class="name">AWS Credits (project)</span>
+            <span class="type" style="color:var(--muted); font-size:0.75rem;">Credits</span>
+            <span class="days">14 days</span>
+            <span><span class="badge warn">⚠ Review</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="section" id="pricing">
-<h2>💰 Simple Pricing for License Management</h2>
-<p>We've structured our plans to make license management affordable for all ranges of creatives and studios.</p>
-<div class="pricing-table">
-<div class="plan">
-<h3>Lithotraq Basic</h3>
-<p><strong>$4.99/mo</strong></p>
-<p>Get started with essential tracking features</p>
-<ul>
-<li>Track up to 3 Licenses</li>
-<li>Select preset notifications</li>
-<li>Simple dashboard view</li>
-</ul>
-</div>
+  <!-- WHO IT'S FOR -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+      <div class="section-label">// Who It's For</div>
+      <h2>Built for teams running complex software stacks</h2>
+      <p class="section-sub">If your work relies on multiple licensed tools across multiple people, a spreadsheet isn't enough.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h4>VFX & Animation Studios</h4>
+          <p>Track Autodesk, Adobe, ShotGrid, and pipeline tools across your whole team. Never lose a render deadline to an expired seat.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <h4>Post-Production Houses</h4>
+          <p>Manage annual, monthly, and perpetual licenses across departments. Unified dashboard, one source of truth.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h4>Creative Agencies</h4>
+          <p>Track design, dev, and ops tooling in one place. Stop paying for tools nobody uses and missing renewals for ones they do.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h4>Software Development Teams</h4>
+          <p>Cloud credits, SaaS subscriptions, CI/CD tool licenses — all visible, all tracked, all flagged before they expire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="plan">
-<h3>Lithotraq Pro</h3>
-<p><strong>$14.99/mo</strong></p>
-<p>Everything you need for professional license management</p>
-<ul>
-<li>Track unlimited licenses</li>
-<li>Advanced scheduling options</li>
-<li>Approvals tools</li>
-</ul>
-</div>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="section-label">// How It Works</div>
+      <h2>One import. Quiet tracking. Timely alerts.</h2>
+      <p class="section-sub">We designed it to be invisible until it matters — then unavoidably clear when something needs your attention.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Upload Your License Data</h3>
+            <p>Send us an export of your existing license information — a spreadsheet, a document, whatever you have. If you have nothing organized yet, we'll work through it with you during onboarding.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>We Structure & Verify</h3>
+            <p>Our team normalizes your data into the Lithotraq system — cleaning up missing renewal dates, identifying ambiguous license types, and flagging anything that's already close to expiry.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Silent Ongoing Tracking</h3>
+            <p>The system runs quietly. Expiration dates are tracked, renewal windows are calculated, and you get nothing from us until there's something worth your attention.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Timely Alerts — Your Way</h3>
+            <p>Before a license expires, we reach out via your preferred channel (email, Slack, or your existing workflow). You confirm whether to renew. On managed plans, we handle the renewal steps for you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="plan">
-<h3>Lithotraq Studio</h3>
-<p><strong>$199/mo</strong></p>
-<p>Everything. Fully managed.</p>
-<ul>
-<li>Complete Managed License Tracking</li>
-<li>All Pro features included</li>
-<li>Dedicated account manager</li>
-</ul>
-</div>
-</div>
+  <!-- FEATURES -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+      <div class="section-label">// Features</div>
+      <h2>Everything you need. Nothing you don't.</h2>
+      <p class="section-sub">No bloat. The feature set is designed around one job: making sure nothing expires on you.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗄️</div>
+          <h4>Secure License Database</h4>
+          <p>All license data stored in a purpose-built secure database with periodic backups. Not a shared spreadsheet.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Unified Dashboard</h4>
+          <p>Every license, every status, every expiry date in one view. Filter by team, tool type, or urgency.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h4>Smart Alert Timing</h4>
+          <p>Configurable lead times per license type. Annuals get 60-day warnings. Monthlies get 2-week notices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✅</div>
+          <h4>Approval Workflows</h4>
+          <p>One-click renewal confirmation or rejection. No login required for simple decisions — just respond to the alert.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h4>Workflow Integration</h4>
+          <p>Pipe alerts into your existing tools — Slack, email, webhooks. Lithotraq works inside your workflow, not around it.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h4>Multi-User Access</h4>
+          <p>Assign licenses to team members. Finance sees costs. Ops sees renewals. Producers see what matters to them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="decision-box">
-<p>Add-ons: </p> 
-<p> Customised Notifications - Integrate Lithotraq inside your existing workflows</p>
-<p> Managed Onboarding - Send us an export of your current license information and we process this into Lithotraq</p>
-<p> Additional portal users</p>
-</div>
-</div>
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="section-label">// Pricing</div>
+      <h2>Simple plans. Real value.</h2>
+      <p class="section-sub">Priced in USD. One missed annual renewal typically costs more than a year of Lithotraq Studio. Do the math.</p>
 
-<div class="section" id="contact">
-<h2>📩 Get Started Today!</h2>
-<p>Ready to simplify your license management? Let us help you load your licenses into the system.</p>
-<div class="deftform" data-form-id="892468f6-0ff5-487a-b1bf-831dc258c314" data-form-width="100%" data-form-align="center" data-form-auto-height="1"></div><script src="https://cdn.deftform.com/embed.js"></script>
-</div>
+      <div class="pricing-grid">
+        <div class="plan">
+          <div class="plan-name">Basic</div>
+          <div class="plan-price">$19 <span>USD/mo</span></div>
+          <p class="plan-desc">For small teams or solo operators with a manageable software stack.</p>
+          <ul class="plan-features">
+            <li>Track up to 10 licenses</li>
+            <li>Email renewal alerts</li>
+            <li>Dashboard access</li>
+            <li>Standard lead times</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
 
-<div class="footer">
-&copy; 2025 nCrypt Lithotraq. Making license management for creative professionals ridiculously creator friendly.
-</div>
+        <div class="plan featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">$49 <span>USD/mo</span></div>
+          <p class="plan-desc">For growing studios and agencies tracking tools across multiple team members.</p>
+          <ul class="plan-features">
+            <li>Unlimited licenses</li>
+            <li>Custom alert lead times</li>
+            <li>Approval workflow tools</li>
+            <li>Slack + email integration</li>
+            <li>Multi-user access (3 seats)</li>
+            <li>Monthly summary report</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
+
+        <div class="plan">
+          <div class="plan-name">Studio</div>
+          <div class="plan-price">$299 <span>USD/mo</span></div>
+          <p class="plan-desc">Fully managed license operations for studios that want zero involvement in the process.</p>
+          <ul class="plan-features">
+            <li>Everything in Pro</li>
+            <li>Dedicated account manager</li>
+            <li>Managed onboarding (we do it)</li>
+            <li>Managed renewals on your behalf</li>
+            <li>Unlimited team seats</li>
+            <li>Custom workflow integration</li>
+            <li>Quarterly operational review</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
+      </div>
+
+      <div class="addons">
+        <h4>Add-ons (any plan)</h4>
+        <div class="addon-list">
+          <div class="addon-item"><i class="fas fa-plug"></i> Custom workflow integration — connect Lithotraq to your existing tools</div>
+          <div class="addon-item"><i class="fas fa-upload"></i> Managed onboarding — we process your existing license data into the system</div>
+          <div class="addon-item"><i class="fas fa-users"></i> Additional portal seats — beyond your plan's included seats</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <div class="section-label">// Get Started</div>
+          <h2>Start tracking today</h2>
+          <p>Send us your current license list — even a rough spreadsheet — and we'll get you onboarded. If you're not sure where to start, we'll run a short audit call to scope what you have.</p>
+          <a href="mailto:hello@ncrypt.nz" class="contact-detail">
+            <i class="fas fa-envelope"></i> hello@ncrypt.nz
+          </a>
+          <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank" class="contact-detail">
+            <i class="fab fa-linkedin"></i> linkedin.com/in/rob-parkes
+          </a>
+          <a href="https://github.com/Abpor" target="_blank" class="contact-detail">
+            <i class="fab fa-github"></i> github.com/Abpor
+          </a>
+        </div>
+        <div>
+          <div class="deftform" data-form-id="892468f6-0ff5-487a-b1bf-831dc258c314" data-form-width="100%" data-form-align="center" data-form-auto-height="1"></div>
+          <script src="https://cdn.deftform.com/embed.js"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="footer-logo">nCrypt</a>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/creatorops/">CreatorOps</a></li>
+      <li><a href="mailto:hello@ncrypt.nz">Email</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 nCrypt Lithotraq. License tracking for studios and production teams. Globally delivered.</p>
+  </footer>
+
 </body>
 </html>

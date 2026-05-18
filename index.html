@@ -3,328 +3,738 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abpor (Rob) @ Ncrypt</title>
+  <title>nCrypt — Operational Reliability for Digital Businesses</title>
+  <meta name="description" content="nCrypt stops digital businesses losing revenue to broken systems, downtime, and operational drift. Get a free Ops Risk Audit today." />
+  <link rel="canonical" href="https://ncrypt.nz/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg: #080c0b;
+      --surface: #0e1512;
+      --surface2: #141c19;
+      --border: rgba(0,255,160,0.12);
+      --accent: #00ffa0;
+      --accent2: #00c8ff;
+      --text: #e8f0ec;
+      --muted: #7a9488;
+      --danger: #ff4d6d;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
     }
 
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Helvetica, Arial, sans-serif;
-      background: url('assets/images/rob_background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow: hidden;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    .overlay {
+    /* GRID NOISE TEXTURE */
+    body::before {
+      content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: -1;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,160,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,160,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .layout {
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
-      height: 100vh;
-      flex-direction: row;
-    }
-
-    .left-pane {
-      width: 35%;
-      min-width: 300px;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      border-right: 2px solid rgba(255, 255, 255, 0.2);
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(8,12,11,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .profile-image {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      aspect-ratio: 2/4;
-      border-radius: 20px;
-      border: 5px solid white;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-      margin-bottom: 20px;
-      object-fit: cover;
-      transition: transform 0.2s ease-in-out;
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
     }
 
-    .profile-image:hover {
-      transform: scale(1.07);
-    }
+    .nav-logo span { color: var(--text); }
 
-    .right-pane {
-      width: 65%;
-      overflow-y: auto;
-      padding: 40px;
+    .nav-links {
       display: flex;
-      flex-direction: column;
-      height: auto;
-      flex-grow: 1; /* Ensures right pane grows on mobile */
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover { background: #00d880 !important; color: #000 !important; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2.5rem 4rem;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      background: rgba(0,255,160,0.05);
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 72px;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
     }
 
-    .social-links {
-      text-align: center;
-      margin: 20px 0;
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
     }
 
-    .social-links a {
-      display: inline-block;
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #000;
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1.8rem;
+      border-radius: 4px;
       text-decoration: none;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px 30px;
-      margin: 10px;
-      border-radius: 20px;
-      font-size: 40px;
-      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .icon {
-      font-size: 52px;
-      margin-right: 10px;
+    .btn-primary:hover { background: #00d880; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1.8rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .main-section {
-      margin-top: 40px;
-      font-size: 24px;
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* TWO-PROBLEM SPLIT */
+    .problems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .problem-card {
+      background: var(--surface);
+      padding: 2rem;
+    }
+
+    .problem-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .problem-card h3 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .problem-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
       line-height: 1.6;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 10px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    .section-heading {
-      text-align: center;
-      font-size: 32px;
-      margin-top: 40px;
-      margin-bottom: 10px;
+    .problem-card .examples {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 
-    .main-section p, .right-pane p {
-      text-align: center !important;
+    .example-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
     }
 
-    .additional-section {
-      margin-top: 40px;
+    .example-item::before {
+      content: '→';
+      color: var(--danger);
+      flex-shrink: 0;
     }
 
-    .additional-links a {
-      text-align: center;
-      display: block;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
+    .problem-card.slow .example-item::before {
+      color: #ffaa00;
+    }
+
+    /* SECTION WRAPPER */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2.5rem;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 520px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
       text-decoration: none;
-      padding: 15px 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      font-size: 32px;
-      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .tidycal-embed {
-      margin-top: 20px;
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
     }
 
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-card:hover { border-color: rgba(0,255,160,0.3); transform: translateY(-2px); }
+
+    .product-card.alt::before { background: var(--accent2); }
+    .product-card.alt:hover { border-color: rgba(0,200,255,0.3); }
+
+    .product-badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      background: rgba(0,255,160,0.05);
+    }
+
+    .product-card.alt .product-badge {
+      color: var(--accent2);
+      background: rgba(0,200,255,0.05);
+    }
+
+    .product-card h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      flex: 1;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .product-card.alt .product-link { color: var(--accent2); }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .about-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: grayscale(20%);
+    }
+
+    .about-text h3 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .about-text .role {
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-text p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* AUDIT CTA */
+    .audit-section {
+      background: linear-gradient(135deg, rgba(0,255,160,0.06) 0%, rgba(0,200,255,0.04) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .audit-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .audit-text h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .audit-text p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      max-width: 440px;
+    }
+
+    .audit-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .audit-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .audit-detail-item i {
+      color: var(--accent);
+      width: 14px;
+    }
+
+    .audit-actions {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .audit-price {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* BOOKING EMBED */
+    .booking-section { background: var(--surface); }
+    .booking-inner { max-width: 900px; margin: 0 auto; }
+    .tidycal-embed { margin-top: 1.5rem; min-height: 400px; }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--muted);
+      width: 100%;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .left-pane {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .right-pane {
-        width: 100%;
-        height: auto;
-        flex-grow: 1;
-        overflow-y: auto; /* Ensures scroll on content */
-      }
-
-      .profile-image {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-      }
-
-      h1 {
-        font-size: 36px;
-      }
-
-      .icon, .social-links a {
-        font-size: 24px;
-      }
-
-      .additional-links a {
-        font-size: 20px;
-      }
-
-      .main-section {
-        font-size: 18px;
-      }
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 5rem 1.25rem 3rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .problems { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .about-inner { flex-direction: column; gap: 1.5rem; }
+      .audit-inner { flex-direction: column; }
+      .audit-actions { width: 100%; }
+      footer { padding: 2rem 1.25rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; }
     }
-
-    #creatorops-banner {
-  background-color: rgba(0, 255, 213, 0.2);
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  font-size: 18px;
-  font-weight: bold;
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0, 255, 213, 0.4);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-#creatorops-banner a {
-  color: #00ffd5;
-  text-decoration: underline;
-  margin-left: 10px;
-}
-
-.close-banner {
-  float: right;
-  margin-left: 1rem;
-  font-size: 24px;
-  cursor: pointer;
-  color: #fff;
-  transition: color 0.2s;
-}
-
-.close-banner:hover {
-  color: #ff6666;
-}
-
   </style>
 
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "so1x1u75w3");
-</script>
-  
-<!-- Visitor Tracking -->
+  </script>
   <script async defer src='https://app.visitortracking.com/assets/js/tracer.js'></script>
   <script>
-    function init_tracer() { 
-    var tracer = new Tracer({  
-    websiteId : "d4232a2c-7f94-4ef8-9172-511d931576b1",  
-    async : true, 
-    debug : false }); 
-    } 
+    function init_tracer() {
+      var tracer = new Tracer({ websiteId: "d4232a2c-7f94-4ef8-9172-511d931576b1", async: true, debug: false });
+    }
   </script>
-
-<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZC6K0BLN8K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-ZC6K0BLN8K');
   </script>
-
 </head>
 <body>
-  <div class="overlay"></div>
-  <div id="creatorops-banner">
-  🚀 New: Check out <strong>nCrypt CreatorOps</strong> - tailored IT & connectivity for content creators.
-  <a href="/creatorops/" target="_blank">Learn more →</a>
-  <span class="close-banner" onclick="document.getElementById('creatorops-banner').style.display='none';">&times;</span>
-  <div id="lithotraq-banner">
-  🚀 New: Check out <strong>nCrypt Lithotraq</strong> - License tracking made simple for artists and creatives.
-  <a href="/lithotraq/" target="_blank">Learn more →</a>
-  <span class="close-banner" onclick="document.getElementById('lithotraq-banner').style.display='none';">&times;</span>
-</div>
-</div>
-  <div class="layout">
-    <!-- Left Pane -->
-    <div class="left-pane">
-      <img src="assets/images/rob_portrait.jpg" alt="Profile Photo" class="profile-image" />
-      <h1>Abpor @ nCrypt</h1><br><h2>Rob Parkes</h2>
 
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">
-          <i class="fab fa-linkedin icon"></i> LinkedIn
-        </a>
-        <a href="https://discord.gg/UVcmCAcnXU" target="_blank">
-          <i class="fab fa-discord icon"></i> Discord
-        </a>
-        <a href="https://github.com/Abpor/" target="_blank">
-          <i class="fab fa-github icon"></i> GitHub
-        </a>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">n<span>Crypt</span></a>
+    <ul class="nav-links">
+      <li><a href="/creatorops/">CreatorOps</a></li>
+      <li><a href="/lithotraq/">Lithotraq</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#audit" class="nav-cta">Free Audit →</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Operational Reliability</div>
+      <h1>Stop losing revenue<br>to <em>broken systems</em><br>and missed signals.</h1>
+      <p class="hero-sub">
+        nCrypt is an operational reliability layer for digital businesses.
+        We prevent sudden failures and slow operational decay before they cost you money.
+      </p>
+      <div class="hero-actions">
+        <a href="#audit" class="btn-primary"><i class="fas fa-search"></i> Get a Free Ops Audit</a>
+        <a href="#products" class="btn-secondary">See What We Do →</a>
       </div>
 
-      <div class="additional-section">
-        <div class="additional-links">
-          <a href="https://www.youtube.com/@ncryptnz" target="_blank">
-            <i class="fas fa-tv icon"></i> YouTube : nCrypt Content
-          </a>
-          <a href="https://www.youtube.com/@ncryptgaming" target="_blank">
-            <i class="fas fa-gamepad icon"></i> Gaming YouTube <br> Gaming videos, Stream VODs and GameGelo
-          </a>
-          <a href="https://podcast.ncrypt.co.nz" target="_blank">
-            <i class="fas fa-podcast icon"></i> Podcast : Nearly Qualified <br> Technology, Psychology and Video Games
-          </a>
-          <a href="https://www.buymeacoffee.com/Ncrypt/" target="_blank">
-            <i class="fas fa-coffee icon"></i> Buy Me A Coffee
-          </a>
+      <!-- TWO PROBLEMS -->
+      <div class="problems">
+        <div class="problem-card">
+          <div class="problem-icon">⚡</div>
+          <h3>Sudden Failures</h3>
+          <p>Revenue stops instantly. Every minute offline is money out.</p>
+          <div class="examples">
+            <span class="example-item">Live stream drops mid-broadcast</span>
+            <span class="example-item">Checkout goes down Friday night</span>
+            <span class="example-item">Lead form silently breaks</span>
+            <span class="example-item">Inbound calls stop routing</span>
+          </div>
+        </div>
+        <div class="problem-card slow">
+          <div class="problem-icon">🕳️</div>
+          <h3>Slow Leaks</h3>
+          <p>Revenue drains invisibly. You don't notice until it's significant.</p>
+          <div class="examples">
+            <span class="example-item">Expired software licenses mid-project</span>
+            <span class="example-item">CRM workflows nobody maintains</span>
+            <span class="example-item">Automations silently failing for weeks</span>
+            <span class="example-item">Subscription drift nobody audits</span>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Right Pane -->
-    <div class="right-pane">
-      <div class="main-section">
-        <h2 class="section-heading">Data Analytics | Generative AI | Automation | VoIP | Operations | IT Support | Quirky Marketing Niches | Gamification | Game Server Hosting | Home Lab IT</h2>
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="section-inner">
+      <div class="section-label">// Products</div>
+      <h2>Two layers of protection</h2>
+      <p class="section-sub">Each product targets a different failure mode. Use one or both — they're designed to work together.</p>
 
-        <h2 class="section-heading">Industry Niches:</h2>
-        <p>
-          Contact Centers, Telecommunications, Media and Entertainment, Bookkeeping and Accounts, Software Development, Game Development
-        </p>
-
-        <h2 class="section-heading">Content Creation Consultancy:</h2>
-        <p>
-          Online Radio, Podcasts, Social Media, YouTube, Brainrot Content, Industry Niche Content, Spicy Marketing Data, Social Media Moderation Data
-        </p>
-
-        <div class="tidycal-embed" data-path="ncrypt/discovery"></div>
-        <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+      <div class="products-grid">
+        <a href="/creatorops/" class="product-card">
+          <span class="product-badge">Layer 1 — Real-Time</span>
+          <h3>CreatorOps</h3>
+          <p>Monitoring, incident response, and uptime continuity for businesses where live operations generate revenue. When something breaks, we already know — and we're already on it.</p>
+          <span class="product-link">Explore CreatorOps <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="/lithotraq/" class="product-card alt">
+          <span class="product-badge">Layer 2 — Stability</span>
+          <h3>Lithotraq</h3>
+          <p>License and dependency tracking for studios and production teams. We watch every renewal date, flag every approaching expiry, and make sure nothing expires quietly mid-project.</p>
+          <span class="product-link">Explore Lithotraq <i class="fas fa-arrow-right"></i></span>
+        </a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-strip">
+    <div class="about-inner">
+      <img src="assets/images/rob_portrait.jpg" alt="Rob Parkes, nCrypt" class="about-photo" />
+      <div class="about-text">
+        <h3>Rob Parkes</h3>
+        <div class="role">Founder · nCrypt</div>
+        <p>
+          Background in IT/MSP operations, ISP infrastructure, VoIP, and systems automation. 
+          Built nCrypt to bring operational reliability thinking — the kind used in telco and enterprise — 
+          to smaller digital businesses that can't afford an internal ops team.
+          Based in New Zealand, serving clients in US, UK, and AU.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT CTA -->
+  <section id="audit">
+    <div class="section-inner">
+      <div class="audit-section" style="padding: 3rem;">
+        <div class="audit-inner">
+          <div class="audit-text">
+            <div class="section-label">// Free Ops Risk Audit</div>
+            <h2>Find out where you're exposed — before something breaks.</h2>
+            <p>We review your operational stack, identify your highest-risk failure points, and deliver a written report with Loom walkthrough. No pitch, no obligation.</p>
+            <div class="audit-detail">
+              <div class="audit-detail-item"><i class="fas fa-check"></i> Async delivery — no time zone friction</div>
+              <div class="audit-detail-item"><i class="fas fa-check"></i> Written report + recorded video walkthrough</div>
+              <div class="audit-detail-item"><i class="fas fa-check"></i> Delivered within 48 hours</div>
+              <div class="audit-detail-item"><i class="fas fa-check"></i> Suitable for agencies, SaaS, studios, ecomm operators</div>
+            </div>
+          </div>
+          <div class="audit-actions">
+            <a href="#booking" class="btn-primary" style="width:100%; justify-content: center;"><i class="fas fa-calendar"></i> Book Free Audit</a>
+            <a href="mailto:hello@ncrypt.nz" class="btn-secondary" style="width:100%; justify-content: center;"><i class="fas fa-envelope"></i> Email Us Directly</a>
+            <p class="audit-price">Free for the first 10 businesses. No credit card.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="booking-section">
+    <div class="booking-inner">
+      <div class="section-label">// Book a Session</div>
+      <h2>Schedule your free audit</h2>
+      <p class="section-sub" style="margin-bottom:0;">Pick a time and we'll confirm. Fully async delivery — no call required if you prefer.</p>
+      <div class="tidycal-embed" data-path="ncrypt/discovery"></div>
+      <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">nCrypt</div>
+      <ul class="footer-links">
+        <li><a href="/creatorops/">CreatorOps</a></li>
+        <li><a href="/lithotraq/">Lithotraq</a></li>
+        <li><a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/Abpor/" target="_blank">GitHub</a></li>
+        <li><a href="https://www.youtube.com/@ncryptnz" target="_blank">YouTube</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2025 nCrypt. Operational reliability for digital businesses. New Zealand–based, globally delivered.</p>
+    </div>
+  </footer>
+
 </body>
 </html>

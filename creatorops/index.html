@@ -3,373 +3,600 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="nCrypt CreatorOps is modular, creator-friendly IT support with managed internet, remote monitoring, and tool setup for streamers, podcasters, and online creators in NZ and beyond.">
-  <title>nCrypt CreatorOps</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="CreatorOps by nCrypt — real-time operational monitoring, incident response, and uptime continuity for digital businesses and studios that generate revenue live." />
+  <title>CreatorOps — Real-Time Ops Protection | nCrypt</title>
   <link rel="canonical" href="https://ncrypt.nz/creatorops/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "Meet Your Team - nCrypt CreatorOps",
-    "description": "Learn about the nCrypt CreatorOps team and how they provide modular and managed IT services for content creators.",
-    "thumbnailUrl": "https://i.ytimg.com/vi/5tgcjC7rmjA/mqdefault.jpg",
-    "uploadDate": "2025-06-28T12:00:00+12:00",
-    "embedUrl": "https://www.youtube.com/embed/5tgcjC7rmjA",
-    "contentUrl": "https://ncrypt.nz/creatorops/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "nCrypt NZ",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ncrypt.nz/assets/images/rob_portrait.jpg"
-      }
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Service",
     "name": "nCrypt CreatorOps",
     "url": "https://ncrypt.nz/creatorops/",
-    "sameAs": [
-      "https://www.youtube.com/@ncryptnz",
-      "https://github.com/abpor",
-      "https://discord.gg/UVcmCAcnXU"
-    ],
-    "description": "Modular IT services, managed connectivity, and tech support for creators and studios.",
-    "logo": "https://ncrypt.nz/assets/images/rob_portrait.jpg"
+    "description": "Real-time operational monitoring, incident response, and uptime continuity for digital businesses.",
+    "provider": { "@type": "Organization", "name": "nCrypt", "url": "https://ncrypt.nz" }
   }
   </script>
+
   <style>
-body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #0f0f0f;
-  color: #f5f5f5;
-}
+    :root {
+      --bg: #080c0b;
+      --surface: #0e1512;
+      --surface2: #141c19;
+      --border: rgba(0,255,160,0.12);
+      --accent: #00ffa0;
+      --accent2: #00c8ff;
+      --text: #e8f0ec;
+      --muted: #7a9488;
+      --danger: #ff4d6d;
+      --warn: #ffaa00;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+    }
 
-.container {
-  max-width: 960px;
-  margin: auto;
-  padding: 1.5rem;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-h1, h2, h3 {
-  color: #00ffd5;
-  margin-top: 0;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-.hero {
-  text-align: center;
-  padding: 2rem 1rem;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,160,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,160,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(8,12,11,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.cta-buttons a {
-  padding: 1rem 2rem;
-  background: #00ffd5;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  flex: 1 1 auto;
-  max-width: 240px;
-  text-align: center;
-}
+    .nav-logo { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--accent); text-decoration: none; }
+    .nav-logo span { color: var(--text); }
+    .nav-back { font-size: 0.78rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: #000; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; padding: 0.5rem 1.1rem; border-radius: 4px; text-decoration: none; }
+    .nav-cta:hover { background: #00d880; }
 
-.section {
-  padding: 2rem 0;
-  border-bottom: 1px solid #333;
-}
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
 
-iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-}
+    .hero-inner { max-width: 860px; margin: 0 auto; width: 100%; }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    .breadcrumb {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
 
-ul li::before {
-  content: "✔️ ";
-  color: #00ffd5;
-}
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--danger);
+      border: 1px solid rgba(255,77,109,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      background: rgba(255,77,109,0.06);
+    }
 
-.pricing-table {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--danger);
+      animation: pulse 1.8s infinite;
+    }
 
-.plan {
-  background: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #333;
-}
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
 
-.plan h3 {
-  margin-top: 0;
-}
+    h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
 
-.footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #777;
-}
+    h1 em { font-style: normal; color: var(--danger); }
 
-form {
-  margin-top: 2rem;
-  background: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #333;
-}
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
 
-input, textarea, select {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: none;
-  font-size: 1rem;
-}
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
 
-button {
-  padding: 0.75rem 1.5rem;
-  background: #00ffd5;
-  border: none;
-  color: #000;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  max-width: 300px;
-}
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #000;
+      font-family: var(--mono); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.04em;
+      padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #00d880; transform: translateY(-1px); }
 
-/* MEDIA QUERIES */
-@media (min-width: 640px) {
-  .pricing-table {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--text);
+      font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.04em;
+      padding: 0.85rem 1.8rem; border: 1px solid var(--border); border-radius: 4px; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* LIVE SCENARIO */
+    .scenario {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      font-size: 0.82rem;
+    }
+
+    .scenario-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .log-line {
+      display: flex;
+      gap: 1.2rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: flex-start;
+    }
+
+    .log-time { color: var(--muted); flex-shrink: 0; min-width: 52px; }
+    .log-status { flex-shrink: 0; }
+    .status-ok { color: var(--accent); }
+    .status-alert { color: var(--danger); }
+    .status-resolve { color: var(--warn); }
+    .log-msg { color: var(--text); }
+
+    /* SECTION */
+    section { position: relative; z-index: 1; padding: 5rem 2.5rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -0.025em; color: var(--text); margin-bottom: 0.75rem; }
+    .section-sub { color: var(--muted); font-size: 0.9rem; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.75; }
+
+    /* WHO IS THIS FOR */
+    .icp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .icp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+    }
+    .icp-card .icp-icon { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .icp-card h4 { font-family: var(--display); font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+    .icp-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--border);
+      flex-shrink: 0;
+      width: 60px;
+      line-height: 1;
+    }
+    .step-content h3 { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .step-content p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .plan.featured {
+      border-color: rgba(0,255,160,0.4);
+      background: linear-gradient(135deg, rgba(0,255,160,0.05) 0%, var(--surface) 100%);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -1px; right: 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #000;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0 0 4px 4px;
+      font-weight: 500;
+    }
+
+    .plan-name {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .plan-price {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .plan-price span { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+    .plan-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.55; }
+
+    .plan-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--muted); }
+    .plan-features li::before { content: '✓'; color: var(--accent); flex-shrink: 0; margin-top: 0.05em; }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.7rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .plan-cta:hover { border-color: var(--accent); color: var(--accent); }
+    .plan.featured .plan-cta { background: var(--accent); border-color: var(--accent); color: #000; }
+    .plan.featured .plan-cta:hover { background: #00d880; }
+
+    /* NOTE STRIP */
+    .note-strip {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+
+    /* CONTACT */
+    .contact-section { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-text h2 { margin-bottom: 0.5rem; }
+    .contact-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-detail:hover { color: var(--accent); }
+    .contact-detail i { color: var(--accent); width: 16px; }
+
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo { font-family: var(--display); font-weight: 800; color: var(--accent); font-size: 1rem; text-decoration: none; }
+    .footer-copy { font-size: 0.72rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 5.5rem 1.25rem 3rem; }
+      section { padding: 3rem 1.25rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { padding: 1.5rem 1.25rem; }
+    }
   </style>
-  
+
   <script async defer src='https://app.visitortracking.com/assets/js/tracer.js'></script>
-  <script>
-    function init_tracer() { 
-      var tracer = new Tracer({  
-        websiteId : "432f7d49-9382-4c6e-b277-716c899bda9b",  
-        async : true, 
-        debug : false }); 
-    } 
+  <script>function init_tracer() { var tracer = new Tracer({ websiteId: "432f7d49-9382-4c6e-b277-716c899bda9b", async: true, debug: false }); }</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","so1x1u75w3");
   </script>
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "so1x1u75w3");
-</script>
-
 </head>
 <body>
-  <div class="container">
-    <div class="hero">
-      <h1>nCrypt CreatorOps</h1>
-      <p>Tech Support That Gets You - Built for Creators, by Creators</p><br>
-      <div class="cta-buttons">
-        <a href="#plans">See Plans</a>
-        <a href="#contact">Talk to a Human</a>
+
+  <nav>
+    <a href="/" class="nav-logo">n<span>Crypt</span></a>
+    <a href="/" class="nav-back"><i class="fas fa-arrow-left"></i> Back to nCrypt</a>
+    <a href="#contact" class="nav-cta">Get Started →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="breadcrumb"><a href="/">nCrypt</a> / CreatorOps</div>
+      <div class="hero-tag">Layer 1 — Real-Time Protection</div>
+      <h1>Your live revenue shouldn't<br>depend on <em>everything going right.</em></h1>
+      <p class="hero-sub">
+        CreatorOps is real-time operational monitoring and incident response for businesses that generate revenue live — studios, agencies, SaaS operators, and ecommerce teams.
+        When something fails, we know before you do.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary"><i class="fas fa-shield-alt"></i> Start Protection</a>
+        <a href="#how" class="btn-secondary">See How It Works →</a>
       </div>
-    </div>
 
-    <div class="section">
-      <h2>👋 Meet Your Team</h2>
-      <p>The team at nCrypt have many years of experience supporting the day-to-day needs of world-class studios, networks, creatives and their clients. Let us keep you safe and connected and free up your creative spark so you can focus on what you do best - let nCrypt handle the tech.</p><br>
-      <p><strong>Watch our quick intro video below:</strong></p>
-      <iframe loading="lazy" src="https://www.youtube.com/embed/5tgcjC7rmjA?si=lgir9p4r8sKTgulQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <div class="section">
-      <h2>💼 How We Can Help</h2>
-      <p><strong>nCrypt CreatorOps</strong> is your drop-in replacement for traditional ISP and IT support designed to cater towards smaller or solo creators with niche and sprawling requirements - Our products are modular so you can pick and choose if you have specific needs. <br><br> All of our client relationships are protected by NDA and industry leading privacy and security.</p><br>
-      <ul>
-        <li><strong>Network Router:</strong> Dual-WAN (Two Different Internet Connections) and Mobile 4G/5G Backup</li><br>
-        <li><strong>Internet:</strong> Managed UFB and Mobile Connections with multi-carrier support</li><br>
-        <li><strong>Support:</strong> Helpdesk available via Discord/Email/Voice, with remote troubleshooting hours available</li><br>
-        <li><strong>Monitoring:</strong> nCrypt device on-network, remote access (attended or unattended), security/firewall support</li><br>
-        <li><strong>Changes:</strong> Peace of mind when upgrading or changing gear that it can work with your setup and workflows</li><br>
-        <li><strong>Hosting:</strong> Game servers, DNS, domains, email, bots (Chatbots/Moderation/Automations)</li><br>
-        <li><strong>Applications:</strong> Help with your tools and software - Such as OBS, Davinci Resolve, Reaper</li><br>
-        <li><strong>Storage:</strong> Your media, footage, configurations and files. Safely secured, accessible and retrievable in multiple places</li><br>
-      </ul>
-    </div>
-
-        <div class="section" id="plan">
-      <h2>📦 Complete Packages</h2>
-      <div class="pricing-table">
-        <div class="plan">
-          <h3>Managed Connectivity</h3>
-          <p><strong>$199/mo</strong></p>
-          <p>Full Managed ISP Package</p>
-          <p>An internet connection package using our managed router, primary internet, backup internet and also mobile backup internet</p>
-          <p>We take care of your migration from your current provider</p><br>
-          <p>Includes:</p>
-          <ul>
-	        <li>Dual WAN Router</li><br>
-            <li>Mobile Backup</li><br>
-	        <li>Primary Internet Connection</li><br>
-	        <li>Backup Internet Connection</li><br>
-	        <li>Mobile Backup Connection</li><br>
-            <li>Monitoring and Alerts</li><br>
-          </ul>
+      <!-- MOCK LOG -->
+      <div class="scenario">
+        <div class="scenario-label">// Live incident log — example</div>
+        <div class="log-line">
+          <span class="log-time">23:04:11</span>
+          <span class="log-status status-ok">[ OK ]</span>
+          <span class="log-msg">All systems nominal — checkout, API, CDN healthy</span>
         </div>
-        <div class="plan">
-          <h3>Monitoring and Support</h3>
-          <p><strong>$99/mo</strong></p>
-          <p>Complete IT Support Package</p>
-          <p>We assess, track and resolve your technology pain points</p>
-          <p>We deploy our nCrypt device on your network for seamless, quick and secure remote support</p>
-          <p>If you rely on key services that need to stay running this is ideal</p><br>
-          <p>Includes:</p>
-          <ul>
-	        <li>nCrypt Device on Network</li><br>
-            <li>Easy Remote Support</li><br>
-            <li>Regular Security Audits</li><br>
-            <li>IP and DDOS Protection</li><br>
-          </ul>
+        <div class="log-line">
+          <span class="log-time">23:07:34</span>
+          <span class="log-status status-alert">[ ALERT ]</span>
+          <span class="log-msg">Payment endpoint response time +800ms — threshold exceeded</span>
         </div>
-        <div class="plan">
-          <h3>Everything Technology</h3>
-          <p><strong>$499/mo</strong></p>
-          <p>Everything. Anytime.</p>
-          <p>Never waste your time dealing with IT or technology problems again</p>
-          <p>The value in this service is that we become a one-stop shop for anything IT for your creative needs</p><br>
-          <p>Includes :</p>
-          <ul>
-	        <li>Managed Connectivity</li><br>
-            <li>Monitoring and Support</li><br>
-            <li>Creator Module</li><br>
-          </ul><br>
-          <p>Also Includes : </p>
-          <ul>
-            <li>Custom Communications</li><br>
-            <li>Regular Check-ins</li><br>
-            <li>Periodic Recommendations</li><br>
-          </ul>
+        <div class="log-line">
+          <span class="log-time">23:07:41</span>
+          <span class="log-status status-alert">[ ALERT ]</span>
+          <span class="log-msg">Checkout conversion drop detected — escalating</span>
+        </div>
+        <div class="log-line">
+          <span class="log-time">23:09:02</span>
+          <span class="log-status status-resolve">[ ACTION ]</span>
+          <span class="log-msg">Client notified. Root cause identified: upstream timeout at payment provider</span>
+        </div>
+        <div class="log-line">
+          <span class="log-time">23:14:18</span>
+          <span class="log-status status-ok">[ OK ]</span>
+          <span class="log-msg">Failover routing confirmed. Checkout restored. Incident report drafted.</span>
         </div>
       </div>
-            <br><p>All complete packages include access to the Helpdesk. Some types of tasks or activity may incur additional time costs which will be explained and agreed before undertaking.</p>
-    </div>
-
-    <div class="section" id="plans">
-      <h2>📦 Modular Pricing</h2>
-      <div class="pricing-table">
-        <div class="plan">
-          <h3>Router Hardware</h3>
-          <p><strong>$699</strong> one-time</p>
-          <p>Router Device Only</p>
-          <p>Preconfigured Dual WAN Router with 5G backup</p>
-          <p>Plug and Play. Set up and ready to go with New Zealand internet connections</p><br>
-          <p>Optional Addons:</p>
-            <ul>
-                <li>Custom Configuration</li><br>
-        </div>
-        <div class="plan">
-          <h3>Helpdesk</h3>
-          <p><strong>$29/mo</strong></p>
-          <p>IT Support when you need it</p>
-          <p>Contact us directly through Discord, Email, Voice call - We can also be available inside your stream chat</p><br>
-          <p>Optional Addons:</p>
-          <ul>
-            <li>Book Dedicated Time Slots</li><br>
-            <li>Time Rollover</li><br>
-            <li>15m of Support Time/Month</li><br>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>Secure</h3>
-          <p><strong>$69/mo</strong></p>
-          <p>Proactive Network Monitoring and Easy Remote Access</p><br>
-          <p>Features:</p>
-          <ul>
-            <li>Managed Device Installed</li><br>
-            <li>Monitored Network</li><br>
-            <li>Proactive Alerts</li><br>
-            <li>Remote Access and Support</li><br>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>Operator</h3>
-          <p><strong>$69/mo</strong></p>
-          <p>Support with creator tools and workflows</p>
-          <p>We assist with setup and keeping your creator tools running </p>
-          <p>We keep backups of your tools and have this ready to restore if something does go wrong</p><br>
-          <p>Includes :</p>
-          <ul>
-            <li>Device and Plugin Sync</li><br>
-            <li>OBS Backups and Rollback</li><br>
-            <li>Proactive Checkups</li><br>
-            <li>Chatbots Support</li><br>
-            <li>Support for Streamer Tools</li><br>
-            <li>30m of Support Time/Month</li><br>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>One-Off Time</h3>
-          <p><strong>Price on Order</strong></p>
-          <p>If you need access to one-off time for any reason, we can provide this to you without changing the modules of your plan with us</p>
-          <p>The idea behind this is that sometimes there could be a need for you to access something we offer outside of your current services</p>
-          <br><p>Useful for :</p>
-          <ul>
-            <li>One-Off Changes</li><br>
-            <li>Quick Access to General IT</li><br>
-            <li>Sudden or Uncertain Events</li><br>
-            <li>Consultation</li><br>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>StudioMesh</h3>
-          <p><em>Coming Soon</em></p>
-          <p>Access to our network of 24/7 private creator studio and co-working spaces</p>
-          <p>Coffee available</p>
-          <br><p>Includes :</p>
-          <ul>
-            <li>24x7 NZ Studio Spaces</li><br>
-            <li>24x7 Japan Studio Spaces</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="contact">
-      <h2>📞 Let's Talk</h2>
-      <p>Curious to see if we are right for your studio or stream? Hit us up and we will help figure out what works best for you.</p>
-      <p>Email: <a href="mailto:CreatorOps@ncrypt.nz" target="_blank">CreatorOps@ncrypt.nz</a></p>
-      <p>Discord: <a href="https://discord.gg/UVcmCAcnXU" target="_blank">Join our Discord</a></p>
-      <div class="deftform" data-form-id="d108027d-c918-4f5e-9219-9ea64521772b" data-form-width="100%" data-form-align="center" data-form-auto-height="1"></div><script src="https://cdn.deftform.com/embed.js"></script>
-    </div>
-    <div class="footer">
-      &copy; 2025 nCrypt NZ. Powered by local tech nerds. Built in New Zealand for kiwi creators.
     </div>
   </div>
+
+  <!-- WHO IT'S FOR -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label">// Who It's For</div>
+      <h2>Built for businesses where downtime costs real money</h2>
+      <p class="section-sub">CreatorOps is designed for internationally-operating digital businesses — not hobbyists, not enterprises. The in-between.</p>
+      <div class="icp-grid">
+        <div class="icp-card">
+          <div class="icp-icon">📡</div>
+          <h4>Live Content Studios</h4>
+          <p>Broadcasters, streamers, and production teams where drops happen mid-revenue and every minute matters.</p>
+        </div>
+        <div class="icp-card">
+          <div class="icp-icon">🛒</div>
+          <h4>Ecommerce Operators</h4>
+          <p>Checkout uptime, payment routing health, and lead form monitoring for stores with real traffic.</p>
+        </div>
+        <div class="icp-card">
+          <div class="icp-icon">🏢</div>
+          <h4>Boutique Agencies</h4>
+          <p>Client-facing operations teams that need a monitoring layer without hiring an internal ops engineer.</p>
+        </div>
+        <div class="icp-card">
+          <div class="icp-icon">⚙️</div>
+          <h4>SaaS Operators</h4>
+          <p>Small SaaS products where API uptime and webhook reliability directly affect retention and churn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+      <div class="section-label">// How It Works</div>
+      <h2>Set once. Monitored always.</h2>
+      <p class="section-sub">No complex setup, no agents to maintain. We instrument your stack and watch it so you don't have to.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Ops Risk Audit</h3>
+            <p>We start with a free review of your current operational stack — identifying where your highest failure risks are and what's worth monitoring vs. what isn't. Delivered async within 48 hours.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Monitoring Setup</h3>
+            <p>We instrument your services — endpoints, uptime checks, webhook health, checkout flows, lead forms — using your existing stack where possible. No heavy infrastructure changes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Active Watching</h3>
+            <p>Our team monitors alerts in real time. Threshold breaches trigger escalation protocols, not just email notifications that get missed at 2am on a Friday.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Incident Response + Reporting</h3>
+            <p>When something fails, we diagnose, notify, and where possible resolve — then send you a written incident report. Monthly operational reviews included at higher tiers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="section-label">// Pricing</div>
+      <h2>Straightforward tiers. No lock-in.</h2>
+      <p class="section-sub">Priced in USD. Cancel anytime. Start with the audit — upgrade when it makes sense.</p>
+
+      <div class="pricing-grid">
+        <div class="plan">
+          <div class="plan-name">Monitor</div>
+          <div class="plan-price">$99 <span>USD/mo</span></div>
+          <p class="plan-desc">Core uptime monitoring and alert delivery. You get notified. You take action.</p>
+          <ul class="plan-features">
+            <li>Uptime + endpoint monitoring</li>
+            <li>Alert notifications (email + Slack)</li>
+            <li>Monthly uptime report</li>
+            <li>Up to 10 monitored services</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
+
+        <div class="plan featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Protect</div>
+          <div class="plan-price">$299 <span>USD/mo</span></div>
+          <p class="plan-desc">Active monitoring plus incident response. We catch it, diagnose it, and notify you with context — not just an alarm.</p>
+          <ul class="plan-features">
+            <li>Everything in Monitor</li>
+            <li>Active incident response team</li>
+            <li>Escalation protocols</li>
+            <li>Incident reports per event</li>
+            <li>Monthly ops review call</li>
+            <li>Up to 25 monitored services</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
+
+        <div class="plan">
+          <div class="plan-name">Ops Partner</div>
+          <div class="plan-price">$599 <span>USD/mo</span></div>
+          <p class="plan-desc">Full managed ops layer. We become your operational reliability team — monitoring, response, and proactive recommendations.</p>
+          <ul class="plan-features">
+            <li>Everything in Protect</li>
+            <li>Dedicated ops contact</li>
+            <li>Proactive stack reviews</li>
+            <li>CRM + workflow health checks</li>
+            <li>Unlimited monitored services</li>
+            <li>Priority response SLA</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Get Started</a>
+        </div>
+      </div>
+
+      <div class="note-strip">
+        <strong style="color: var(--text);">Not sure which tier fits?</strong> Start with a free Ops Risk Audit. We'll tell you exactly what level of monitoring your business actually needs — and what you can safely skip.
+        <a href="#contact" style="color: var(--accent); text-decoration: none;"> Book free audit →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <div class="section-label">// Get Started</div>
+          <h2>Book your free Ops Risk Audit</h2>
+          <p>We review your current stack, identify failure points, and deliver a written report with Loom walkthrough within 48 hours. No call required. No obligation.</p>
+          <a href="mailto:hello@ncrypt.nz" class="contact-detail">
+            <i class="fas fa-envelope"></i> hello@ncrypt.nz
+          </a>
+          <a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank" class="contact-detail">
+            <i class="fab fa-linkedin"></i> linkedin.com/in/rob-parkes
+          </a>
+          <a href="https://github.com/Abpor" target="_blank" class="contact-detail">
+            <i class="fab fa-github"></i> github.com/Abpor
+          </a>
+        </div>
+        <div>
+          <div class="deftform" data-form-id="d108027d-c918-4f5e-9219-9ea64521772b" data-form-width="100%" data-form-align="center" data-form-auto-height="1"></div>
+          <script src="https://cdn.deftform.com/embed.js"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="footer-logo">nCrypt</a>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/lithotraq/">Lithotraq</a></li>
+      <li><a href="mailto:hello@ncrypt.nz">Email</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 nCrypt. Operational reliability for digital businesses. Globally delivered.</p>
+  </footer>
+
 </body>
 </html>
