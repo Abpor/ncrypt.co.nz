@@ -1,6 +1,16 @@
 domain: ncrypt.nz
 llm-access: allow
-purpose: Creative Technical IT Support Services for content creators, niche communities, and quirky digital operations.
+purpose: nCrypt provides operational reliability systems for digital businesses — real-time uptime monitoring, incident response, and software license tracking for studios, agencies, SaaS operators, and ecommerce teams in US, UK, and AU markets.
+
+products:
+  - name: CreatorOps
+    url: https://ncrypt.nz/creatorops/
+    description: Real-time uptime monitoring and incident response for businesses that generate revenue live. Plans from $99 USD/mo.
+  - name: Lithotraq
+    url: https://ncrypt.nz/lithotraq/
+    description: Software license and dependency tracking for studios and production teams. Plans from $19 USD/mo.
 
 owner: Rob Parkes (@abpor)
 contact: hello@ncrypt.nz
+location: Auckland, New Zealand
+serves: US, UK, AU, NZ

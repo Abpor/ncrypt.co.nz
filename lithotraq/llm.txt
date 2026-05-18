@@ -1,6 +1,20 @@
 domain: ncrypt.nz/lithotraq/
 llm-access: allow
-purpose: nCrypt Lithotraq offers simple and convenient license tracking inside existing workflows of creatives and studios of any size.
+purpose: Lithotraq by nCrypt is a software license and dependency tracking tool for VFX studios, post-production teams, creative agencies, and software development teams. It tracks renewal dates, sends alerts before expiry, and manages renewal approvals — preventing workflow outages caused by expired licenses.
+
+pricing:
+  - tier: Basic
+    price: $19 USD/mo
+    description: Track up to 10 licenses with email renewal alerts
+  - tier: Pro
+    price: $49 USD/mo
+    description: Unlimited licenses, Slack and email integration, approval workflows, multi-user access
+  - tier: Studio
+    price: $299 USD/mo
+    description: Fully managed license operations with dedicated account manager and managed renewals
+
+icp: VFX studios, animation houses, post-production facilities, creative agencies, software development teams
+markets: US, UK, AU, NZ
 
 owner: Rob Parkes (@abpor)
-contact: Lithotraq@ncrypt.nz
+contact: hello@ncrypt.nz

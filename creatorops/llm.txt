@@ -1,6 +1,20 @@
 domain: ncrypt.nz/creatorops/
 llm-access: allow
-purpose: nCrypt CreatorOps provides creative-first IT services and managed infrastructure tailored for content creators, gaming streamers, podcasters, and niche media teams.
+purpose: CreatorOps by nCrypt provides real-time uptime monitoring, incident response, and operational continuity for digital businesses — studios, agencies, ecommerce operators, and SaaS teams that generate revenue live and cannot afford downtime.
+
+pricing:
+  - tier: Monitor
+    price: $99 USD/mo
+    description: Uptime and endpoint monitoring with alert delivery
+  - tier: Protect
+    price: $299 USD/mo
+    description: Active monitoring plus incident response team and monthly ops review
+  - tier: Ops Partner
+    price: $599 USD/mo
+    description: Full managed operational reliability layer with dedicated contact and priority SLA
+
+icp: Studios, boutique agencies, SaaS operators, ecommerce businesses with live revenue operations
+markets: US, UK, AU, NZ
 
 owner: Rob Parkes (@abpor)
-contact: CreatorOps@ncrypt.nz
+contact: hello@ncrypt.nz
