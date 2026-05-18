@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Block internal tools and link shortener
+Disallow: /
+
+User-agent: *
+Host: link.ncrypt.nz
+Disallow: /
+
 Sitemap: https://ncrypt.nz/sitemap.xml
