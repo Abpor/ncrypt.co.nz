@@ -26,7 +26,8 @@
     main{position:relative;z-index:1;padding:8rem 2.5rem 5rem}.section-inner{max-width:900px;margin:0 auto}.section-label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}.section-sub{color:var(--muted);font-size:.95rem;max-width:620px;margin-bottom:3rem;line-height:1.75}
     .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.product-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .25s,transform .2s;position:relative;overflow:hidden;min-height:260px}.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}.product-card:hover::before{transform:scaleX(1)}.product-card:hover{border-color:rgba(0,255,160,.3);transform:translateY(-2px)}.product-badge{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);padding:.2rem .6rem;border-radius:2px;margin-bottom:1.2rem;display:inline-block;width:fit-content;background:rgba(0,255,160,.05)}.product-card h2{font-family:var(--display);font-size:1.25rem;font-weight:700;margin-bottom:.5rem}.product-card p{font-size:.83rem;color:var(--muted);flex:1;line-height:1.65;margin-bottom:1.5rem}.product-meta{font-size:.72rem;color:var(--muted);margin-bottom:.8rem}.product-link{font-size:.8rem;color:var(--accent);display:flex;align-items:center;gap:.4rem}.tools-note{margin-top:3rem;padding:1.5rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.82rem}
     footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:2.5rem}.footer-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}.footer-logo{font-family:var(--display);font-weight:800;color:var(--accent);font-size:1rem}.footer-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap}.footer-links a{color:var(--muted);text-decoration:none;font-size:.78rem}.footer-links a:hover{color:var(--accent)}.footer-copy{font-size:.72rem;color:var(--muted);width:100%}
-    @media(max-width:768px){nav{padding:1rem 1.25rem}.nav-links{display:none}main{padding:6rem 1.25rem 3.5rem}.products-grid{grid-template-columns:1fr}footer{padding:2rem 1.25rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:1rem}}
+    @media(max-width:768px){nav{position:relative;padding:1rem 1.25rem;flex-wrap:wrap;gap:.75rem}.nav-links{display:flex;flex-wrap:wrap;gap:.75rem 1rem}main{padding:3rem 1.25rem 3.5rem}.products-grid{grid-template-columns:1fr}footer{padding:2rem 1.25rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:1rem}}
+    a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Free Tools for Digital Businesses","url":"https://ncrypt.nz/tools/","description":"Free tools from nCrypt for AI cost planning, infrastructure, automation and operational reliability."}</script>
 </head>
@@ -34,7 +35,8 @@
   <nav>
     <a href="/" class="nav-logo">n<span>Crypt</span></a>
     <ul class="nav-links">
-      <li><a href="/creatorops/">CreatorOps</a></li>
+      <li><a href="https://creatorops.nz/">CreatorOps</a></li>
+      <li><a href="/policyproof/">PolicyProof</a></li>
       <li><a href="/lithotraq/">Lithotraq</a></li>
       <li><a href="/tools/">Tools</a></li>
       <li><a href="/#about">About</a></li>
@@ -62,7 +64,8 @@
     <div class="footer-inner">
       <div class="footer-logo">nCrypt</div>
       <ul class="footer-links">
-        <li><a href="/creatorops/">CreatorOps</a></li>
+        <li><a href="https://creatorops.nz/">CreatorOps</a></li>
+        <li><a href="/policyproof/">PolicyProof</a></li>
         <li><a href="/lithotraq/">Lithotraq</a></li>
         <li><a href="/tools/">Tools</a></li>
         <li><a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

@@ -4,8 +4,11 @@ purpose: nCrypt provides operational reliability systems for digital businesses 
 
 products:
   - name: CreatorOps
-    url: https://ncrypt.nz/creatorops/
-    description: Real-time uptime monitoring and incident response for businesses that generate revenue live. Plans from $99 USD/mo.
+    url: https://creatorops.nz/
+    description: Founder-led remote technical operations, administration, troubleshooting and advisory support for systems agreed during onboarding. NZ$995/month plus NZ$750 onboarding.
+  - name: PolicyProof
+    url: https://ncrypt.nz/policyproof/
+    description: Evidence management for requirements, assertions and proof. Starter NZ$59/month and Standard NZ$149/month after a 14-day trial. PolicyProof does not certify compliance.
   - name: Lithotraq
     url: https://ncrypt.nz/lithotraq/
     description: Software license and dependency tracking for studios and production teams. Plans from $19 USD/mo.

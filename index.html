@@ -32,7 +32,7 @@
     "founder": {
       "@type": "Person",
       "name": "Rob Parkes",
-      "sameAs": "https://www.linkedin.com/in/rob-parkes-922994217/"
+      "sameAs": "https://www.linkedin.com/in/robert-parkes-ncrypt/"
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -40,7 +40,7 @@
       "contactType": "customer support"
     },
     "sameAs": [
-      "https://www.linkedin.com/in/rob-parkes-922994217/",
+      "https://www.linkedin.com/in/robert-parkes-ncrypt/",
       "https://github.com/Abpor",
       "https://www.youtube.com/@ncryptnz"
     ],
@@ -585,6 +585,7 @@
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
@@ -605,7 +606,8 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
-      .nav-links { display: none; }
+      nav { position: relative; flex-wrap: wrap; gap: .75rem; }
+      .nav-links { display: flex; flex-wrap: wrap; gap: .75rem 1rem; }
       .hero { padding: 5rem 1.25rem 3rem; }
       section { padding: 3.5rem 1.25rem; }
       .problems { grid-template-columns: 1fr; }
@@ -616,6 +618,8 @@
       footer { padding: 2rem 1.25rem; }
       .footer-inner { flex-direction: column; gap: 1rem; }
     }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 
   <!-- Microsoft Clarity -->
@@ -650,7 +654,8 @@
   <nav>
     <a href="/" class="nav-logo">n<span>Crypt</span></a>
     <ul class="nav-links">
-      <li><a href="/creatorops/">CreatorOps</a></li>
+      <li><a href="https://creatorops.nz/">CreatorOps</a></li>
+      <li><a href="/policyproof/">PolicyProof</a></li>
       <li><a href="/lithotraq/">Lithotraq</a></li>
       <li><a href="/tools/">Tools</a></li>
       <li><a href="#about">About</a></li>
@@ -704,15 +709,21 @@
   <section id="products">
     <div class="section-inner">
       <div class="section-label">// Products</div>
-      <h2>Two layers of protection</h2>
-      <p class="section-sub">Each product targets a different failure mode. Use one or both — they're designed to work together.</p>
+      <h2>Ways to keep operations in order</h2>
+      <p class="section-sub">Technical operations support and evidence management for different parts of your business.</p>
 
       <div class="products-grid">
-        <a href="/creatorops/" class="product-card">
-          <span class="product-badge">Layer 1 — Real-Time</span>
+        <a href="https://creatorops.nz/" class="product-card">
+          <span class="product-badge">Technical operations</span>
           <h3>CreatorOps</h3>
-          <p>Monitoring, incident response, and uptime continuity for businesses where live operations generate revenue. When something breaks, we already know — and we're already on it.</p>
+          <p>Founder-led remote administration, troubleshooting and advisory support for the systems agreed during onboarding. NZ$995/month plus NZ$750 onboarding.</p>
           <span class="product-link">Explore CreatorOps <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="/policyproof/" class="product-card alt">
+          <span class="product-badge">Evidence management</span>
+          <h3>PolicyProof</h3>
+          <p>Organise requirements, assertions and proof for customer questionnaires, insurance renewal and recurring reviews. From NZ$59/month after a 14-day trial.</p>
+          <span class="product-link">Explore PolicyProof <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="/lithotraq/" class="product-card alt">
           <span class="product-badge">Layer 2 — Stability</span>
@@ -766,7 +777,7 @@
           <div class="audit-actions">
             <a href="#booking" class="btn-primary" style="width:100%; justify-content: center;"><i class="fas fa-calendar"></i> Book Free Audit</a>
             <a href="mailto:hello@ncrypt.nz" class="btn-secondary" style="width:100%; justify-content: center;"><i class="fas fa-envelope"></i> Email Us Directly</a>
-            <p class="audit-price">Free for the first 10 businesses. No credit card.</p>
+            <p class="audit-price">Free. No credit card.</p>
           </div>
         </div>
       </div>
@@ -789,10 +800,11 @@
     <div class="footer-inner">
       <div class="footer-logo">nCrypt</div>
       <ul class="footer-links">
-        <li><a href="/creatorops/">CreatorOps</a></li>
+        <li><a href="https://creatorops.nz/">CreatorOps</a></li>
+        <li><a href="/policyproof/">PolicyProof</a></li>
         <li><a href="/lithotraq/">Lithotraq</a></li>
         <li><a href="/tools/">Tools</a></li>
-        <li><a href="https://www.linkedin.com/in/rob-parkes-922994217/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/robert-parkes-ncrypt/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://github.com/Abpor/" target="_blank">GitHub</a></li>
         <li><a href="https://www.youtube.com/@ncryptnz" target="_blank">YouTube</a></li>
       </ul>
