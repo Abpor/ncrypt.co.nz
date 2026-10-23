@@ -58,12 +58,14 @@
   // TidyCal posts bookingComplete from its own origin when a booking is submitted
   // inside the embed. Accept it only from the embed's iframe with a well-formed payload.
   var tidycal = document.querySelector(".tidycal-embed");
+  // embed.js replaces the .tidycal-embed div with an iframe that carries the same class.
+  function embedFrame() { return document.querySelector("iframe.tidycal-embed") || (tidycal && tidycal.querySelector("iframe")); }
   window.addEventListener("message", function (e) {
     try {
       if (e.origin !== TIDYCAL_ORIGIN) return;
       var data = e.data;
       if (!data || typeof data !== "object" || data.event !== "bookingComplete") return;
-      var frame = tidycal && tidycal.querySelector("iframe");
+      var frame = embedFrame();
       if (!frame || e.source !== frame.contentWindow) return;
       var booking = data.data && data.data.booking;
       if (!booking || typeof booking !== "object") return;
@@ -90,7 +92,7 @@
   // If the booking widget never renders, show a direct way to reach us.
   if (tidycal) {
     setTimeout(function () {
-      if (tidycal.querySelector("iframe")) return;
+      if (embedFrame()) return;
       var note = document.getElementById("booking-fallback");
       if (note) note.hidden = false;
       track("booking_load_failed", {});
