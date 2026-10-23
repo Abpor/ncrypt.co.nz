@@ -555,6 +555,8 @@
     .booking-section { background: var(--surface); }
     .booking-inner { max-width: 900px; margin: 0 auto; }
     .tidycal-embed { margin-top: 1.5rem; min-height: 400px; }
+    .booking-fallback { margin-top: 1rem; color: var(--muted); }
+    .booking-fallback a { color: var(--accent); }
 
     /* FOOTER */
     footer {
@@ -633,12 +635,15 @@
   <script async defer src="https://app.visitortracking.com/assets/js/tracer.js" > </script>
   <script>
     function init_tracer() {
-      var tracer = new Tracer({
-        websiteId : 'd4232a2c-7f94-4ef8-9172-511d931576b1',
-        async : true,
-        debug : false
-    });
-  }
+      try {
+        if (typeof Tracer !== "function") return;
+        new Tracer({
+          websiteId : 'd4232a2c-7f94-4ef8-9172-511d931576b1',
+          async : true,
+          debug : false
+        });
+      } catch (e) { /* optional analytics must not break the page */ }
+    }
   </script> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZC6K0BLN8K"></script>
   <script>
@@ -659,7 +664,7 @@
       <li><a href="/lithotraq/">Lithotraq</a></li>
       <li><a href="/tools/">Tools</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#audit" class="nav-cta">Free Audit →</a></li>
+      <li><a href="#audit" class="nav-cta" data-track="audit_cta_clicked">Free Audit →</a></li>
     </ul>
   </nav>
 
@@ -673,7 +678,7 @@
         We prevent sudden failures and slow operational decay before they cost you money.
       </p>
       <div class="hero-actions">
-        <a href="#audit" class="btn-primary"><i class="fas fa-search"></i> Get a Free Ops Audit</a>
+        <a href="#audit" class="btn-primary" data-track="audit_cta_clicked"><i class="fas fa-search"></i> Get a Free Ops Audit</a>
         <a href="#products" class="btn-secondary">See What We Do →</a>
       </div>
 
@@ -781,7 +786,7 @@
             </div>
           </div>
           <div class="audit-actions">
-            <a href="#booking" class="btn-primary" style="width:100%; justify-content: center;"><i class="fas fa-calendar"></i> Book Free Audit</a>
+            <a href="#booking" class="btn-primary" data-track="audit_cta_clicked" style="width:100%; justify-content: center;"><i class="fas fa-calendar"></i> Book Free Audit</a>
             <a href="mailto:hello@ncrypt.nz" class="btn-secondary" style="width:100%; justify-content: center;"><i class="fas fa-envelope"></i> Email Us Directly</a>
             <p class="audit-price">Free. No credit card.</p>
           </div>
@@ -798,6 +803,8 @@
       <p class="section-sub" style="margin-bottom:0;">Pick a time and we'll confirm. Fully async delivery — no call required if you prefer.</p>
       <div class="tidycal-embed" data-path="ncrypt/free-operations-audit"></div>
       <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+      <p id="booking-fallback" class="booking-fallback" hidden>The booking calendar did not load. Email <a href="mailto:hello@ncrypt.nz?subject=Free%20Ops%20Risk%20Audit">hello@ncrypt.nz</a> and we will arrange a time.</p>
+      <noscript><p class="booking-fallback">Enable JavaScript to use the booking calendar, or email <a href="mailto:hello@ncrypt.nz?subject=Free%20Ops%20Risk%20Audit">hello@ncrypt.nz</a>.</p></noscript>
     </div>
   </section>
 
@@ -818,5 +825,6 @@
     </div>
   </footer>
 
+  <script src="/assets/site.js"></script>
 </body>
 </html>
