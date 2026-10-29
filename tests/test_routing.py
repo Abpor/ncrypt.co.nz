@@ -1,4 +1,5 @@
 import os
+import subprocess
 import unittest
 import urllib.error
 import urllib.parse
@@ -71,6 +72,7 @@ class DocumentFactsParser(HTMLParser):
         self.links = []
         self.link_elements = []
         self.script_types = []
+        self.asset_references = []
 
     def handle_starttag(self, tag, attrs):
         attributes = {name.lower(): (value or "") for name, value in attrs}
@@ -83,8 +85,11 @@ class DocumentFactsParser(HTMLParser):
             self.links.append(attributes)
         elif tag == "link":
             self.link_elements.append(attributes)
+            self.asset_references.append(attributes.get("href", ""))
         elif tag == "script":
             self.script_types.append(attributes.get("type", "").lower())
+        if "src" in attributes:
+            self.asset_references.append(attributes["src"])
 
     def handle_endtag(self, tag):
         if tag.lower() == "title":
@@ -183,6 +188,59 @@ class StaticRoutingTests(unittest.TestCase):
             '<link rel="canonical" href="https://creatorops.nz/">',
             creatorops,
         )
+
+
+class PublicBuildTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.public_root = REPO_ROOT / "public"
+        subprocess.run(
+            ["sh", str(REPO_ROOT / "scripts" / "build-public.sh")],
+            check=True,
+            cwd=REPO_ROOT,
+        )
+
+    def public_route_file(self, route):
+        route_path = urllib.parse.urlsplit(route).path
+        relative = route_path.lstrip("/")
+        if not relative or route_path.endswith("/"):
+            relative = str(Path(relative) / "index.html")
+        return self.public_root / relative
+
+    def test_sitemap_routes_are_published_or_owned_by_the_calculator_project(self):
+        sitemap = ET.parse(self.public_root / "sitemap.xml")
+        locations = sitemap.findall(
+            "{http://www.sitemaps.org/schemas/sitemap/0.9}url/"
+            "{http://www.sitemaps.org/schemas/sitemap/0.9}loc"
+        )
+        self.assertEqual(len(locations), 8)
+
+        for location in locations:
+            path = urllib.parse.urlsplit(location.text).path
+            with self.subTest(path=path):
+                if path in DEPLOY_MERGED_ROUTES:
+                    continue
+                self.assertTrue(self.public_route_file(path).is_file())
+
+    def test_local_document_assets_are_in_the_public_output(self):
+        for document in self.public_root.rglob("*.html"):
+            parser = DocumentFactsParser()
+            parser.feed(document.read_text(encoding="utf-8"))
+            for reference in filter(None, parser.asset_references):
+                parsed = urllib.parse.urlsplit(reference)
+                if parsed.scheme or parsed.netloc or not parsed.path:
+                    continue
+                resolved = self.public_route_file(parsed.path)
+                with self.subTest(document=document, reference=reference):
+                    self.assertTrue(resolved.is_file())
+
+    def test_public_output_contains_the_custom_404(self):
+        self.assertTrue((self.public_root / "404.html").is_file())
+
+    def test_development_and_repository_files_are_not_published(self):
+        for relative in ("tests", "CNAME", "COPYRIGHT", ".git", "scripts"):
+            with self.subTest(relative=relative):
+                self.assertFalse((self.public_root / relative).exists())
 
 
 class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
