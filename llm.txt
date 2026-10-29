@@ -1,6 +1,15 @@
 domain: ncrypt.nz
 llm-access: allow
-purpose: nCrypt provides operational reliability systems for digital businesses — real-time uptime monitoring, incident response, and software license tracking for studios, agencies, SaaS operators, and ecommerce teams in US, UK, and AU markets.
+purpose: nCrypt delivers fixed-scope technical implementation projects for established businesses and agency partners, including business software migrations, API and software integrations, workflow remediation and reconciliation, and defined technical recovery work.
+
+services:
+  - Fixed-scope technical implementation projects
+  - Business software migrations and data reconciliation
+  - API and software integrations
+  - Workflow remediation and technical recovery
+  - Agency technical delivery partnerships
+
+enquiry: Free Project Scoping Call at https://ncrypt.nz/#booking. CreatorOps at https://creatorops.nz/ owns recurring technical operations, ongoing administration and support, studio infrastructure services, and the Technical Health Check.
 
 products:
   - name: CreatorOps
